@@ -30,7 +30,7 @@
                   <h5 class="mb-3">Simply dummy text of the printing and typesetting.</h5>
                   <p class="text-200 m-0 mb-3">By - <span class="text-300 fw-bold">Frederico giuspam</span></p>
                   <p class="mb-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
-                  <button class="btn btn-link text-warning p-0"><span class="fw-medium">Read full article</span><img class="ms-3" src="assets/img/icons/long-arrow.png" alt="" /></button>
+                  <button class="btn btn-link text-warning p-0" onClick="window.location.href = '?p=read_more'"><span class="fw-medium">Read full article</span><img class="ms-3" src="assets/img/icons/long-arrow.png" alt="" /></button>
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@
                   <h5 class="mb-3">Simply dummy text of the printing and typesetting.</h5>
                   <p class="text-200 m-0 mb-3">By - <span class="text-300 fw-bold">Frederico giuspam</span></p>
                   <p class="mb-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
-                  <button class="btn btn-link text-warning p-0"><span class="fw-medium">Read full article</span><img class="ms-3" src="assets/img/icons/long-arrow.png" alt="" /></button>
+                  <button class="btn btn-link text-warning p-0" onClick="window.location.href = '?p=read_more'"><span class="fw-medium">Read full article</span><img class="ms-3" src="assets/img/icons/long-arrow.png" alt="" /></button>
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
                   <h5 class="mb-3">Simply dummy text of the printing and typesetting.</h5>
                   <p class="text-200 m-0 mb-3">By - <span class="text-300 fw-bold">Frederico giuspam</span></p>
                   <p class="mb-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
-                  <button class="btn btn-link text-warning p-0"><span class="fw-medium">Read full article</span><img class="ms-3" src="assets/img/icons/long-arrow.png" alt="" /></button>
+                  <button class="btn btn-link text-warning p-0" onClick="window.location.href = '?p=read_more'"><span class="fw-medium">Read full article</span><img class="ms-3" src="assets/img/icons/long-arrow.png" alt="" /></button>
                 </div>
               </div>
             </div>

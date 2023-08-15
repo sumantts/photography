@@ -49,11 +49,11 @@
             </div>
 
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="d-flex align-items-center justify-content-center mt-3">
               <button class="btn btn-link d-inline-block text-warning p-0 fs-1"><span class="fw-bold">See all</span></button>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- end of .container-->
 
