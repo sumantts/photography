@@ -40,9 +40,14 @@
 			include('setup/category_manager/category_manager.php');		
 		break;
 
-		case 'banner':
-			$title = "Banner Management";
-			include('setup/banner/banner.php');		
+		case 'portfolio':
+			$title = "Portfolio Management";
+			include('setup/portfolio/portfolio.php');		
+		break;	
+
+		case 'gallery':
+			$title = "Gallery Management";
+			include('setup/gallery/gallery.php');		
 		break;	
 
 		case 'authors':

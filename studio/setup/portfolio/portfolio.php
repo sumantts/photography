@@ -176,4 +176,4 @@
 <!-- [ Main Content ] end -->
 	<?php include('common/footer.php'); ?>
     
-    <script src="setup/banner/function.js"></script>
+    <script src="setup/portfolio/function.js"></script>

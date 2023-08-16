@@ -1,27 +1,31 @@
+$('#onMyModal').on('click', function(){
+    clearForm();
+    $('#exampleModalLong').modal('show');
+})
 
 function validateForm(){
-    $serviceName = $('#serviceName').val().replace(/^\s+|\s+$/gm,'');
-    $serviceDescription = $('#serviceDescription').val().replace(/^\s+|\s+$/gm,'');
+    $author_name = $('#author_name').val().replace(/^\s+|\s+$/gm,'');
+    $author_bio = $('#author_bio').val().replace(/^\s+|\s+$/gm,'');
     $status = true;
 
-    if($serviceName == ''){
+    if($author_name == ''){
         $status = false;
-        $('#serviceName').removeClass('is-valid');
-        $('#serviceName').addClass('is-invalid');
+        $('#author_name').removeClass('is-valid');
+        $('#author_name').addClass('is-invalid');
     }else{
         $status = true;
-        $('#serviceName').removeClass('is-invalid');
-        $('#serviceName').addClass('is-valid');
+        $('#author_name').removeClass('is-invalid');
+        $('#author_name').addClass('is-valid');
     }
 
-    if($serviceDescription == ''){
+    if($author_bio == ''){
         $status = false;
-        $('#serviceDescription').removeClass('is-valid');
-        $('#serviceDescription').addClass('is-invalid');
+        $('#author_bio').removeClass('is-valid');
+        $('#author_bio').addClass('is-invalid');
     }else{
         $status = true;
-        $('#serviceDescription').removeClass('is-invalid');
-        $('#serviceDescription').addClass('is-valid');
+        $('#author_bio').removeClass('is-invalid');
+        $('#author_bio').addClass('is-valid');
     }    
 
     $('#submitForm_spinner').hide();
@@ -32,14 +36,16 @@ function validateForm(){
 }//en validate form
 
 function clearForm(){
-    $('#serviceName').val('');
-    $('#serviceName').removeClass('is-valid');
-    $('#serviceName').removeClass('is-invalid');
+    $('#author_name').val('');
+    $('#author_name').removeClass('is-valid');
+    $('#author_name').removeClass('is-invalid');
 
-    $('#serviceDescription').val('');
-    $('#serviceDescription').removeClass('is-valid');
-    $('#serviceDescription').removeClass('is-invalid');
-    $('#service_id').val('0');
+    $('#author_bio').val('');
+    $('#author_bio').removeClass('is-valid');
+    $('#author_bio').removeClass('is-invalid');
+    $('#author_id').val('0');           
+    let img = document.getElementById('image');
+    img.src = '';
 
 }//end 
 
@@ -56,13 +62,14 @@ $('#submitForm').click(function(){
         $formVallidStatus = validateForm();
 
         if($formVallidStatus == true){
-            $service_id = $('#service_id').val();
-            $servicesPhoto = localStorage.getItem('image');
+            $author_id = $('#author_id').val();
+            $author_photo = localStorage.getItem('author_photo');
+            $author_status = $('#author_status').val();
 
             $.ajax({
                 method: "POST",
-                url: "setup/banner/function.php",
-                data: { fn: "saveServices", service_id: $service_id, serviceName: $serviceName, serviceDescription: $serviceDescription, servicesPhoto: $servicesPhoto }
+                url: "setup/gallery/function.php",
+                data: { fn: "saveFormData", author_id: $author_id, author_name: $author_name, author_bio: $author_bio, author_photo: $author_photo, author_status: $author_status }
             })
             .done(function( res ) {
                 //console.log(res);
@@ -72,7 +79,7 @@ $('#submitForm').click(function(){
                     $('.toast-right').toast('show');
                     //$('#liveToast').toast('show');
                     clearForm();
-                    localStorage.setItem('image', '');
+                    localStorage.setItem('author_photo', '');
                     $('#exampleModalLong').modal('hide');
                     populateDataTable();
                 }else{
@@ -84,35 +91,36 @@ $('#submitForm').click(function(){
     }, 500)    
 })
 
-function editService($service_id){
+function editTableData($author_id){
     $('#exampleModalLong').modal('show');
     $.ajax({
         method: "POST",
-        url: "setup/banner/function.php",
-        data: { fn: "getServiceData", service_id: $service_id }
+        url: "setup/gallery/function.php",
+        data: { fn: "getFormEditData", author_id: $author_id }
     })
     .done(function( res ) {
         //console.log(res);
         $res1 = JSON.parse(res);
         if($res1.status == true){
-            $('#serviceName').val($res1.name);
-            $('#serviceDescription').val($res1.description);            
+            $('#author_name').val($res1.author_name);
+            $('#author_bio').val($res1.author_bio);            
             let img = document.getElementById('image');
-            img.src = $res1.services_photo;
-            localStorage.setItem("image", $res1.services_photo);
-            $('#service_id').val($service_id);
+            img.src = $res1.author_photo;
+            localStorage.setItem("author_photo", $res1.author_photo);
+            $('#author_status').val($res1.author_status).trigger('change');  
+            $('#author_id').val($author_id);
         }
     });//end ajax
 
 }
 
 //Delete function	
-function deleteService($service_id){
+function deleteTableData($author_id){
     if (confirm('Are you sure to delete the Service?')) {
         $.ajax({
             method: "POST",
-            url: "setup/banner/function.php",
-            data: { fn: "deleteService", service_id: $service_id }
+            url: "setup/gallery/function.php",
+            data: { fn: "deleteTableData", author_id: $author_id }
         })
         .done(function( res ) {
             //console.log(res);
@@ -132,7 +140,7 @@ function savePhoto(){
 
     reader.addEventListener("load", function () {
         // convert image file to base64 string and save to localStorage
-        localStorage.setItem("image", reader.result);
+        localStorage.setItem("author_photo", reader.result);
     }, false);
 
     if (imgPath) {
@@ -142,7 +150,7 @@ function savePhoto(){
     //To display image again
     setTimeout(function(){
     let img = document.getElementById('image');
-    img.src = localStorage.getItem('image');
+    img.src = localStorage.getItem('author_photo');
     }, 250);
 }
 
@@ -152,10 +160,11 @@ function populateDataTable(){
     $('#example').dataTable().fnDestroy();
 
     $('#example').DataTable({ 
+        columnDefs: [{ width: 40, targets: 0 }, { width: 400, targets: 1 }, { width: 50, targets: 3 }],
         responsive: true,
         serverMethod: 'GET',
-        ajax: {'url': 'setup/banner/function.php?fn=getServices' },
-        dom: 'Bltfrtip',
+        ajax: {'url': 'setup/gallery/function.php?fn=getTableData' },
+        dom: 'Bfrtip',
         buttons: [
             {
                 extend:    'copyHtml5',

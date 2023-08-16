@@ -30,11 +30,14 @@
 					<li class="nav-item <?php if($p == 'home_page'){ ?> active <?php } ?>">
 					    <a href="?p=home_page&gr=setup" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Home Page</span></a>
 					</li>
+					<li class="nav-item <?php if($p == 'portfolio'){ ?> active <?php } ?>">
+					    <a href="?p=portfolio&gr=setup" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Portfolio Management</span></a>
+					</li>
+					<li class="nav-item <?php if($p == 'gallery'){ ?> active <?php } ?>">
+					    <a href="?p=gallery&gr=setup" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Gallery Management</span></a>
+					</li>
 					<li class="nav-item <?php if($p == 'category_manager'){ ?> active <?php } ?>">
 					    <a href="?p=category_manager&gr=setup" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Category Manager</span></a>
-					</li>
-					<li class="nav-item <?php if($p == 'banner'){ ?> active <?php } ?>">
-					    <a href="?p=banner&gr=setup" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Banner Management</span></a>
 					</li>
 					<li class="nav-item <?php if($p == 'authors'){ ?> active <?php } ?>">
 					    <a href="?p=authors&gr=setup" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Authors Profile</span></a>

@@ -66,7 +66,7 @@
 				$data[1] = $name;
 				$data[2] = $description;
 				$data[3] = "<img src='".$services_photo."' id='saved_image' width='100'>";// $services_photo;
-				$data[4] = "<i class='fa fa-edit' aria-hidden='true' onclick='editService(".$service_id.")'></i> <i class='fa fa-trash' aria-hidden='true' onclick='deleteService(".$service_id.")'></i>";
+				$data[4] = "<a href='javascript: void(0)'><i class='fa fa-edit' aria-hidden='true' onclick='editService(".$service_id.")'></i></a>  <a href='javascript: void(0)'><i class='fa fa-trash' aria-hidden='true' onclick='deleteService(".$service_id.")'></i></a>";
 
 				array_push($mainData, $data);
 				$slno++;

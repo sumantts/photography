@@ -1,7 +1,8 @@
 <?php
 //Services	
 $services_text = 'We are providing below services.';
-$services = array();
+
+$portfollios = array();
 $sql = "SELECT * FROM service_manager";
 $result = $mysqli->query($sql);
 
@@ -18,7 +19,7 @@ if ($result->num_rows > 0) {
         $service->description = $description;
         $service->services_photo = $services_photo;
 
-        array_push($services, $service);
+        array_push($portfollios, $service);
     }
 }
 //$mysqli->close();
