@@ -27,6 +27,9 @@
 					<li class="nav-item pcoded-menu-caption" id="setup">
 						<label>SETUP</label>
 					</li>
+					<li class="nav-item <?php if($p == 'home_page'){ ?> active <?php } ?>">
+					    <a href="?p=home_page&gr=setup" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Home Page</span></a>
+					</li>
 					<li class="nav-item <?php if($p == 'category_manager'){ ?> active <?php } ?>">
 					    <a href="?p=category_manager&gr=setup" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Category Manager</span></a>
 					</li>

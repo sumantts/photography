@@ -30,6 +30,11 @@
 		break;
 
 		//SETUP		
+		case 'home_page':
+			$title = "Home Page";
+			include('setup/home_page/home_page.php');		
+		break;
+
 		case 'category_manager':
 			$title = "Category Manager";
 			include('setup/category_manager/category_manager.php');		

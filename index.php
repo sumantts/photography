@@ -1,6 +1,7 @@
 <?php	
-	//include 'studio/assets/php/sql_conn.php';
-  $title = '';
+	include 'studio/assets/php/sql_conn.php';
+
+  	$title = 'Home';
 	if(isset($_GET["p"])){
 		$p = $_GET["p"];
 	}else{
