@@ -328,7 +328,7 @@
                         
                             <div class="form-row">                                     
                                 <div class="col-md-4 mb-2 mt-4">
-                                    <input type="file" accept="image/*" class="custom-file-input" name="hom_bottom_left_img" id="hom_bottom_left_img" aria-describedby="hom_bottom_left_img"  onchange="savePhoto()">
+                                    <input type="file" accept="image/*" class="custom-file-input" name="hom_bottom_left_img" id="hom_bottom_left_img" aria-describedby="hom_bottom_left_img" onchange="_savePhoto()">
                                     <input type="hidden" name="hom_bottom_left_img_old" id="hom_bottom_left_img_old" value="<?=$hom_bottom_left_img_old?>">
                                     <label class="custom-file-label" for="validatedCustomFile">Bottom Left Image...</label>
                                     <small id="hom_bottom_left_imgError" class="form-text text-danger"> </small>
@@ -336,7 +336,7 @@
                                 </div>  
                                                                     
                                 <div class="col-md-4 mb-2 mt-4">
-                                    <input type="file" accept="image/*" class="custom-file-input" name="hom_middle_img" id="hom_middle_img" aria-describedby="hom_middle_img"  onchange="savePhoto()">
+                                    <input type="file" accept="image/*" class="custom-file-input" name="hom_middle_img" id="hom_middle_img" aria-describedby="hom_middle_img"  onchange="_savePhoto()">
                                     <input type="hidden" name="hom_middle_img_old" id="hom_middle_img_old" value="<?=$hom_middle_img_old?>">
                                     <label class="custom-file-label" for="validatedCustomFile">Middle Image...</label>
                                     <small id="hom_middle_imgError" class="form-text text-danger"> </small>
@@ -344,7 +344,7 @@
                                 </div>  
                                                                     
                                 <div class="col-md-4 mb-2 mt-4">
-                                    <input type="file" accept="image/*" class="custom-file-input" name="hom_top_right_img" id="hom_top_right_img" aria-describedby="hom_top_right_img"  onchange="savePhoto()">
+                                    <input type="file" accept="image/*" class="custom-file-input" name="hom_top_right_img" id="hom_top_right_img" aria-describedby="hom_top_right_img"  onchange="_savePhoto()">
                                     <input type="hidden" name="hom_top_right_img_old" id="hom_top_right_img_old" value="<?=$hom_top_right_img_old?>">
                                     <label class="custom-file-label" for="validatedCustomFile">Top Right Image...</label>
                                     <small id="hom_top_right_imgError" class="form-text text-danger"> </small>
@@ -408,4 +408,4 @@
     });
     </script>
     
-    <script src="setup/post/function.js"></script>
+    <script src="setup/home_page/function.js"></script>
