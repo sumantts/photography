@@ -63,10 +63,6 @@
                                 </button>
                                 <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
                                     <li><a href="javascript: void(0)" data-toggle="modal" id="onMyModal"><i class="feather icon-file-plus"></i> add new</a> </li>
-                                    <!-- <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
-                                    <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
-                                    <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
-                                    <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li> -->
                                 </ul>
                             </div>
                         </div>
@@ -136,7 +132,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="author_bio">Biography*</label>
                                         <!-- <input type="text" class="form-control" id="author_bio" placeholder="Group Description" value="" required> -->
-                                        <textarea class="form-control" id="author_bio" value="" required style="min-height:300px;"></textarea>
+                                        <textarea class="form-control" id="author_bio" value="" required ></textarea>
                                         <div class="valid-feedback">
                                             Looks good!
                                         </div>                                    
@@ -167,6 +163,40 @@
                                     </div> 
 
                                 </div>
+                                
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="facebook_link">FaceBook Link*</label>
+                                        <input type="text" class="form-control" id="facebook_link" value="" required >
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>                                    
+                                        <div class="invalid-feedback">
+                                            Please provide Link.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="linkedin_link">Linkedin Link*</label>
+                                        <input type="text" class="form-control" id="linkedin_link" value="" required >
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>                                    
+                                        <div class="invalid-feedback">
+                                            Please provide Link.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="instagram_link">Instagram Link*</label>
+                                        <input type="text" class="form-control" id="instagram_link" value="" required >
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>                                    
+                                        <div class="invalid-feedback">
+                                            Please provide Link.
+                                        </div>
+                                    </div>
+                                </div>  
+
                             </form>
                         </div>
                         <div class="modal-footer">

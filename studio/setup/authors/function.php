@@ -18,14 +18,17 @@
 		$author_bio = $_POST["author_bio"];	
 		$author_photo = $_POST["author_photo"];	
 		$author_status = $_POST["author_status"];
+		$facebook_link = $_POST["facebook_link"];
+		$linkedin_link = $_POST["linkedin_link"];
+		$instagram_link = $_POST["instagram_link"];
 		
 		try {
 			if($author_id > 0){
 				$status = true;
-				$sql = "UPDATE author_details SET author_name = '" .$author_name. "', author_bio = '" .$author_bio. "', author_photo = '" .$author_photo. "', author_status = '" .$author_status. "' WHERE author_id = '" .$author_id. "' ";
+				$sql = "UPDATE author_details SET author_name = '" .$author_name. "', author_bio = '" .$author_bio. "', author_photo = '" .$author_photo. "', author_status = '" .$author_status. "', facebook_link = '" .$facebook_link. "', linkedin_link = '" .$linkedin_link. "', instagram_link = '" .$instagram_link. "' WHERE author_id = '" .$author_id. "' ";
 				$result = $mysqli->query($sql);
 			}else{
-				$sql = "INSERT INTO author_details (author_name, author_bio, author_photo) VALUES ('" .$author_name. "', '" .$author_bio. "', '" .$author_photo. "')";
+				$sql = "INSERT INTO author_details (author_name, author_bio, author_photo, facebook_link, linkedin_link, instagram_link) VALUES ('" .$author_name. "', '" .$author_bio. "', '" .$author_photo. "', '" .$facebook_link. "', '" .$linkedin_link. "', '" .$instagram_link. "')";
 				$result = $mysqli->query($sql);
 				$insert_id = $mysqli->insert_id;
 				if($insert_id > 0){
@@ -113,7 +116,10 @@
 				$author_photo = $row['author_photo'];	
 			}else{
 				$author_photo = '';
-			}
+			}			
+			$facebook_link = $row['facebook_link'];				
+			$linkedin_link = $row['linkedin_link'];				
+			$instagram_link = $row['instagram_link'];	
 		} else {
 			$status = false;
 		}
@@ -123,6 +129,9 @@
 		$return_array['author_bio'] = $author_bio;
 		$return_array['author_photo'] = $author_photo;
 		$return_array['author_status'] = $author_status;
+		$return_array['facebook_link'] = $facebook_link;
+		$return_array['linkedin_link'] = $linkedin_link;
+		$return_array['instagram_link'] = $instagram_link;
 		$return_array['status'] = $status;
     	echo json_encode($return_array);
 	}//function end

@@ -65,11 +65,14 @@ $('#submitForm').click(function(){
             $author_id = $('#author_id').val();
             $author_photo = localStorage.getItem('author_photo');
             $author_status = $('#author_status').val();
+            $facebook_link = $('#facebook_link').val();
+            $linkedin_link = $('#linkedin_link').val();
+            $instagram_link = $('#instagram_link').val();
 
             $.ajax({
                 method: "POST",
                 url: "setup/authors/function.php",
-                data: { fn: "saveFormData", author_id: $author_id, author_name: $author_name, author_bio: $author_bio, author_photo: $author_photo, author_status: $author_status }
+                data: { fn: "saveFormData", author_id: $author_id, author_name: $author_name, author_bio: $author_bio, author_photo: $author_photo, author_status: $author_status, facebook_link: $facebook_link, linkedin_link: $linkedin_link, instagram_link: $instagram_link }
             })
             .done(function( res ) {
                 //console.log(res);
@@ -109,6 +112,9 @@ function editTableData($author_id){
             localStorage.setItem("author_photo", $res1.author_photo);
             $('#author_status').val($res1.author_status).trigger('change');  
             $('#author_id').val($author_id);
+            $('#facebook_link').val($res1.facebook_link);
+            $('#linkedin_link').val($res1.linkedin_link);
+            $('#instagram_link').val($res1.instagram_link);
         }
     });//end ajax
 

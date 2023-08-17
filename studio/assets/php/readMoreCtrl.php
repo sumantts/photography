@@ -20,7 +20,7 @@ if ($result->num_rows > 0) {
     $post_image = $row['post_image'];	
     $post_video = $row['post_video'];		
     $post_tags = $row['post_tags'];		
-    $created_on = $row['created_on'];		
+    $created_on = date('jS. F, Y', strtotime($row['created_on']));		
     $activity_status = $row['activity_status'];	   
     
 }
