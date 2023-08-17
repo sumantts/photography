@@ -71,6 +71,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card-body">
                         <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;" id="orgFormAlert">
 							<strong>Success!</strong> Your Data Deleted successfully.
@@ -107,6 +108,7 @@
 
                     </div>
                 </div>
+                
             </div>
 
             <!-- Modal start -->

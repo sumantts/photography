@@ -2,117 +2,54 @@
     include('common/head.php'); 
     $error_messages = '';
     $success_messages = '';
-    
-    $sql = "SELECT * FROM gallery";
-    $result = $mysqli->query($sql);
 
-    if ($result->num_rows > 0) {
-        $status = true;	
-        $row = $result->fetch_array();
-        $gal_id = $row['gal_id'];			
-        $album_id = $row['album_id'];		
-        $album_name = $row['album_name'];		
-        $photo_title = $row['photo_title'];
-        $photo_description = $row['photo_description'];	
-        $gallery_photo_old = $row['gallery_photo'];	
-    } else {
-        $gal_id = 0;
-        $album_name = '';
-        $album_id = '';
-        $photo_title = '';
-        $photo_description = '';
-        $gallery_photo_old = '';
-    }
-
-    //Update data    
-    if(isset($_POST["submitForm"]))
+    if(isset($_POST["sub"]))
     {
-        $gal_id = $_POST["gal_id"];
-        $hom_title = $_POST["hom_title"];
-        $hom_description = mysqli_real_escape_string($mysqli, $_POST["hom_description"]);	
-        $gallery_photo = $_FILES["gallery_photo"];
-        $hom_middle_img = $_FILES["hom_middle_img"];
-        $gallery_photo = $_FILES["gallery_photo"];
-        $target_dir = "assets/images/gallery/";
-
-        if($gal_id > 0){
-            $status = true;
-            $sql = "UPDATE home_page SET hom_title = '" .$hom_title. "', hom_description = '" .$hom_description. "' WHERE gal_id = '" .$gal_id. "' ";
-            $result = $mysqli->query($sql);
-        }else{
-            $sql = "INSERT INTO home_page (`hom_title`, `hom_description`) VALUES ('" .$hom_title. "', '" .$hom_description. "')";
-
-            $result = $mysqli->query($sql);
-            $gal_id = $mysqli->insert_id;
-            if($gal_id > 0){
-                $status = true;                
-            }else{
-                $return_result['error_message'] = 'Photo size is soo large';
-                $status = false;
-            }		
+        $photonames = $_FILES["photos"]["name"];
+        $tag_name = $_POST["tag_name"];
+        $photo_description = $_POST["photo_description"];
+        $tag_name1 = str_replace(" ","_",$tag_name);
+        mkdir("assets/images/gallery/".$tag_name1);
+        $newfilepath = "assets/images/gallery/$tag_name1/";
+        $photo_stream = implode('|',$photonames);
+        $sql = "INSERT INTO photo_gallery (photo_name, tag_name) VALUES ('" .$photo_stream. "', '" .$tag_name. "')";
+        mysqli_query($mysqli, $sql);
+        for($i = 0; $_FILES["photos"]["name"][$i] == true; $i++)
+        {
+            
+            $photoName = $_FILES["photos"]["name"][$i];
+            $photoSize = $_FILES["photos"]["size"][$i];	
+            $tem_path = $_FILES["photos"]["tmp_name"][$i];
+            move_uploaded_file($tem_path,"$newfilepath/$photoName");
         }
-
-        if(basename($_FILES["gallery_photo"]["name"]) != ''){
-            $target_file = $target_dir . basename($_FILES["gallery_photo"]["name"]);
-            $gallery_photo = basename($_FILES["gallery_photo"]["name"]);
-            $gallery_photo_old = $_POST["gallery_photo_old"];
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            
-            // Check if image file is a actual image or fake image
-            $check = getimagesize($_FILES["gallery_photo"]["tmp_name"]);
-            if($check !== false) {
-                $success_messages .= "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                $error_messages .= "File is not an image.";
-                $uploadOk = 0;
-            }
-            
-            // Check if file already exists
-            /*if (file_exists($target_file)) {
-                $error_messages .= " Sorry, file already exists.";
-                $uploadOk = 0;
-            }*/
-            
-            // Check file size
-            if ($_FILES["gallery_photo"]["size"] > 500000) {
-                $error_messages .= " Sorry, your file is too large.";
-                $uploadOk = 0;
-            }
-            //$success_messages .= " The file Size: ".$_FILES["gallery_photo"]["size"]; //The file Size: 124933
-            
-            // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" ) {
-                $error_messages .= " Sorry, only JPG, JPEG, PNG files are allowed.";
-                $uploadOk = 0;
-            }
-            
-            // Check if $uploadOk is set to 0 by an error
-            if ($uploadOk == 0) {
-                $error_messages .= " Sorry, your file was not uploaded.";
-                // if everything is ok, try to upload file
-            } else {
-                $unlink_file_path = $target_dir . $gallery_photo_old;
-                if (file_exists($unlink_file_path)) {
-                    unlink($unlink_file_path);
-                }
-
-              if (move_uploaded_file($_FILES["gallery_photo"]["tmp_name"], $target_file)) {
-                $success_messages .= " The file ". htmlspecialchars( basename( $_FILES["gallery_photo"]["name"])). " has been uploaded.";
-                $sql2 = "UPDATE home_page SET gallery_photo = '" .$gallery_photo. "' WHERE gal_id = '" .$gal_id. "' ";
-                $mysqli->query($sql2);
-
-              } else {
-                $error_messages .= " Sorry, there was an error uploading your file.";
-              }
-            }
-
-        }//end 1st image upload if
-
-        //sleep(3);
         header("location:?p=gallery&gr=setup");
+    }else{
+        $tag_name = '';
+        $photo_description = '';
     }
+
+    
+    //Delete gallery
+    if(isset($_GET["id"])){
+        $id = $_GET["id"];
+        $getsql = "SELECT tag_name FROM photo_gallery WHERE id = '" .$id. "'";
+        $getres = mysqli_query($mysqli, $getsql);
+        $getrow = mysqli_fetch_array($getres);
+        $tag_name = $getrow["tag_name"];
+        $tag_name1 = str_replace(" ","_",$tag_name);
+        $delpath = "assets/images/gallery/".$tag_name1;
+        $files = glob($delpath.'/*');
+        foreach($files as $file){
+            if(is_file($file)){
+                unlink($file);
+            }
+        }
+        
+        rmdir("assets/images/gallery/".$tag_name1);
+        
+        mysqli_query($mysqli, "DELETE FROM photo_gallery WHERE id =".$id);
+        header("location:?p=gallery&gr=setup&del=ok");
+    }//end
 ?>
 
 
@@ -185,68 +122,23 @@
 
                         <form class="needs-validation" name="myForm" id="myForm" action="" method="post" enctype="multipart/form-data">                        
                             <div class="form-row">  
-                                <div class="col-md-3 mb-3">
-                                    <label for="album_name">New Album Name*</label>
-                                    <input type="text" class="form-control" id="album_name" name="album_name" value="<?=$album_name?>"/> 
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>                                    
-                                    <div class="invalid-feedback">
-                                        Please provide Title.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 mb-3">
-                                    <label for="album_id">Choose Album Name*</label>
-                                    <select class="form-control" id="album_id" name="album_id"> 
-                                        <option value="0" <?php if($album_id == '0'){?> selected <?php } ?>>Select</option>
-                                    </select>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>                                    
-                                    <div class="invalid-feedback">
-                                        Please provide Title.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="photo_title">Title</label>
-                                    <input type="text" class="form-control" id="photo_title" name="photo_title"> 
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>                                    
-                                    <div class="invalid-feedback">
-                                        Please provide Title.
-                                    </div>
-                                </div>
-                            </div>    
-
-                            <div class="form-row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="photo_description">Short Description</label>
-                                    <textarea class="form-control" id="photo_description" name="photo_description" ><?=$photo_description?></textarea>
+                                    <label for="album_name">Album Name*</label>
+                                    <input type="text" class="form-control" id="tag_name" name="tag_name" value="<?=$tag_name?>" /> 
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>                                    
                                     <div class="invalid-feedback">
-                                        Please provide Biography.
+                                        Please provide Title.
                                     </div>
-                                </div>   
-
+                                </div>
                                 <div class="col-md-4 mb-2 mt-4">
-                                    <input type="file" accept="image/*" class="custom-file-input" name="gallery_photo" id="gallery_photo" aria-describedby="gallery_photo" onchange="_savePhoto()">
-                                    <input type="hidden" name="gallery_photo_old" id="gallery_photo_old" value="<?=$gallery_photo_old?>">
-                                    <label class="custom-file-label" for="validatedCustomFile">Choose Images...</label>
-                                    <small id="gallery_photoError" class="form-text text-danger"> </small>
-
-                                    <?php if($gallery_photo_old != ''){?>
-                                    <img src="assets/images/home_page/<?=$gallery_photo_old?>" id="image" width="200">  
-                                    <?php } ?>                                  
+                                    <input type="file" accept="image/*" class="custom-file-input" name="photos[]" multiple id="gallery_photo" aria-describedby="gallery_photo" >                                    
+                                    <label class="custom-file-label" for="validatedCustomFile">Choose Images...</label>                                                                   
                                 </div>   
 
-                                <div class="col-md-4 mb-2 mt-4">  
-                                    <input type="hidden" id="gal_id" name="gal_id" value="<?=$gal_id?>">                            
-                                    <input type="submit" class="btn  btn-primary" name="submitForm" id="submitForm" />                                 
+                                <div class="col-md-4 mb-2 mt-4">                           
+                                    <input type="submit" class="btn  btn-primary" name="sub" id="submitForm" />                                 
                                 </div>   
                             </div> 
                         </form>
@@ -299,18 +191,57 @@
                                 <thead>
                                     <tr>
                                         <th>Sl.No.</th>
-                                        <th>Name</th>
+                                        <th>Tag Name</th>
                                         <th>Photo</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    <?php
+                                    $i = 0;
+                                    $fetch_fotu = "SELECT * FROM photo_gallery";
+                                    $res_fotu = mysqli_query($mysqli, $fetch_fotu);
+                                    while($row_fotu = mysqli_fetch_object($res_fotu))
+                                    {
+                                    $i++;
+                                    
+                                    ?>
+                                    <tr>
+                                        <td><?=$i?></td>
+                                        <td><?=$row_fotu->tag_name?></td>
+                                            
+                                        <td>
+                                            <?php
+                                            $tag_name1 = str_replace(" ","_",$row_fotu->tag_name);
+                                            $photo_image = explode('|',$row_fotu->photo_name);
+                                            $count = sizeof($photo_image);
+                                            foreach($photo_image as $key => $value)
+                                            {
+                                            
+                                            ?>
+                                                <div style="background:#000; width:50px; height:50px; text-align:center; float:left; margin-right:5px;">
+                                                <img src="assets/images/gallery/<?=$tag_name1?>/<?php echo $value; ?>" width="50px;" height="50px;" style="padding:5px;" />
+                                                </div>
+                                                
+                                            <?php 
+                                            } 
+                                            ?>
+                                            
+                                        </td>
+                                        <td>           
+                                            <a title="Delete" href="javascript:void(0)" onclick="if(confirm('Are you Sure to delete the Album')){window.location.href='?p=gallery&gr=setup&id=<?=$row_fotu->id?>'}">
+                                            <i class='fa fa-trash' aria-hidden='true'></i>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+	                                <?php } ?>
+                                </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Sl.No.</th>
                                         <th>Name</th>
                                         <th>Photo</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
@@ -352,4 +283,4 @@
     });
     </script>
     
-    <script src="setup/gallery/function.js"></script>
+    <!-- <script src="setup/gallery/function.js"></script> -->
