@@ -4,7 +4,7 @@
             <div class="col-8">
               <div class="d-inline-block"><a class="navbar-brand pt-0 fs-3 text-black d-flex align-items-center" href="?p=home">
                 <img class="img-fluid" src="assets/img/rong_logo_icon.jpg" alt="" />
-                <span class="fw-bolder ms-2">Photo</span><span class="fw-thin">graphy</span></a></div>
+                <span class="fw-bolder ms-2">Rong</span><span class="fw-thin">Chabi</span></a></div>
             </div>
             <div class="col-4 d-lg-none text-end pe-0">
               <button class="btn p-0 shadow-none text-black fs-2 d-inline-block" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle offcanvas navigation"><span class="menu-bar"></span></button>

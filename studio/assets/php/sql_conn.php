@@ -43,21 +43,23 @@
 		echo $r['SocietyNm'];
 	endwhile;*/
 
-	$title = 'Photo Graphy';
-	$logo_text = 'PhotoGraphy';
+	$title = 'RongChabi';
+	$logo_text = 'RongChabi';
 
-    $p_name = 'Photo Graphy';
+    $p_name = 'RongChabi';
 	$logo = 'rong_logo.jpg';
 	$ico = 'rong_logo.jpg';
 	
 
 	//Social Media
 	$socials = [
-		"twitter" => '',
-		"facebook" => '',
-		"instagram" => '',
+		"twitter" => 'https://twitter.com/',
+		"facebook" => 'https://www.facebook.com/',
+		"instagram" => 'https://www.instagram.com/',
 		"google_plus" => '',
 		"linkedin" => '',
+		"flickr" => 'https://www.flickr.com/photos/',
+		"youtube" => 'https://www.youtube.com/'
 	];
 
 		 

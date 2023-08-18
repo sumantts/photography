@@ -3,7 +3,7 @@
 $posts_adda = array();
 $pi = $_GET['pi'];
 
-$sql = "SELECT category_list.category_id, category_list.category_name, category_list.category_slug, author_details.author_id, author_details.author_name, author_details.author_bio, author_details.author_photo, post_manager.post_id, post_manager.post_title, post_manager.post_description, post_manager.post_image, post_manager.post_video, post_manager.post_tags, post_manager.activity_status, post_manager.created_on FROM post_manager JOIN category_list ON category_list.category_id = post_manager.category_id JOIN author_details ON author_details.author_id = post_manager.author_id WHERE author_details.author_status = 'active' AND category_list.activity_status = 'active' AND  post_manager.activity_status = 'active' AND post_manager.post_id = $pi ";
+$sql = "SELECT category_list.category_id, category_list.category_name, category_list.category_slug, author_details.author_id, author_details.author_name, author_details.author_bio, author_details.author_photo, author_details.facebook_link, author_details.linkedin_link, author_details.instagram_link, post_manager.post_id, post_manager.post_title, post_manager.post_description, post_manager.post_image, post_manager.post_video, post_manager.post_tags, post_manager.activity_status, post_manager.created_on FROM post_manager JOIN category_list ON category_list.category_id = post_manager.category_id JOIN author_details ON author_details.author_id = post_manager.author_id WHERE author_details.author_status = 'active' AND category_list.activity_status = 'active' AND  post_manager.activity_status = 'active' AND post_manager.post_id = $pi ";
 $result = $mysqli->query($sql);
 
 if ($result->num_rows > 0) {
@@ -14,7 +14,10 @@ if ($result->num_rows > 0) {
     $author_id = $row['author_id'];				
     $author_name = $row['author_name'];			
     $author_bio = $row['author_bio'];			
-    $author_photo = $row['author_photo'];	
+    $author_photo = $row['author_photo'];			
+    $facebook_link = $row['facebook_link'];			
+    $linkedin_link = $row['linkedin_link'];			
+    $instagram_link = $row['instagram_link'];	
     $post_title = $row['post_title'];		
     $post_description = $row['post_description'];	
     $post_image = $row['post_image'];	

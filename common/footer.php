@@ -4,9 +4,9 @@
           <div class="col-md-6 mb-5 mb-md-0">
             <div class="mb-4 d-inline-block"><a class="navbar-brand pt-0 fs-3 text-white d-flex align-items-center" href="index.html">
               <!-- <img class="img-fluid" src="assets/img/icons/dark-logo-icon.png" alt="" width="25" height="25" /> -->
-              <span class="fw-bolder ms-2">Photo</span><span class="fw-thin">graphy</span></a></div>
-            <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-map-marker-alt"></i><a class="nav-link text-300 d-inline" href="https://www.google.com/maps/place/2109+WS+09+Oxford+Rd+%23127+ParkVilla+Hills,+">2109 WS 09 Oxford Rd #127 ParkVilla Hills, MI 48334</a></div>
-            <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-phone"></i><a class="nav-link text-300 d-inline" href="tel:+8801976476893">+88 019 76456893</a></div>
+              <span class="fw-bolder ms-2">Rong</span><span class="fw-thin">Chabi</span></a></div>
+            <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-map-marker-alt"></i><a class="nav-link text-300 d-inline" href="https://goo.gl/maps/VuuVSM7XAeUe3CYn8" target="_blank">Uma Niketan, 35/3/2 Baksara Road, <br>Baksara, Howrah-711110</a></div>
+            <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-phone"></i><a class="nav-link text-300 d-inline" href="tel:+919674335554">+91 96743 35554</a></div>
             <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-envelope"></i><a class="nav-link text-300 d-inline" href="mailto:scrscrumbledegg@gmail.com">scrumbledegg@gmail.com</a></div>
           </div>
           <div class="col-md-6">
@@ -20,7 +20,12 @@
                 </div>
               </div>
             </form>
-            <div class="d-flex gap-2 flex-wrap justify-content-between align-items-center"><a class="social-icons" href="https://www.facebook.com/" target="_blank">Facebook</a><a class="social-icons" href="https://www.flickr.com/photos/" target="_blank">Flickr</a><a class="social-icons" href="https://twitter.com/" target="_blank">Twitter</a><a class="social-icons" href="https://www.instagram.com/" target="_blank">Instagram</a><a class="social-icons" href="https://www.youtube.com/" target="_blank">Youtube</a>
+            <div class="d-flex gap-2 flex-wrap justify-content-between align-items-center">
+              <a class="social-icons" href="<?=$socials["facebook"]?>" target="_blank">Facebook</a>
+              <a class="social-icons" href="<?=$socials["flickr"]?>" target="_blank">Flickr</a>
+              <a class="social-icons" href="<?=$socials["twitter"]?>" target="_blank">Twitter</a>
+              <a class="social-icons" href="<?=$socials["instagram"]?>" target="_blank">Instagram</a>
+              <a class="social-icons" href="<?=$socials["youtube"]?>" target="_blank">Youtube</a>
             </div>
           </div>
         </div>

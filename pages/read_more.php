@@ -40,7 +40,17 @@ include('studio/assets/php/readMoreCtrl.php');
                   <div class="col-12 col-xl-12 text-center text-xl-start">
                     <h4><?=$author_name?></h4>
                     <p class="text-warning mb-2 text-center"><?=$author_bio?></p>
-                  <div class="col-12 col-xl-4 justify-content-center fs-2 d-flex gap-1"><a href="#!"><span class="team-social-icon fab fa-linkedin ml-3"></span></a><a href="#!"><span class="team-social-icon fab fa-facebook ml-3"></span></a><a href="#!"><span class="team-social-icon fab fa-instagram ml-3"></span></a></div>
+                  <div class="col-12 col-xl-4 justify-content-center fs-2 d-flex gap-1">
+                    <?php if($linkedin_link != ''){?>
+                    <a href="<?=$linkedin_link?>" target="_blank"><span class="team-social-icon fab fa-linkedin ml-3"></span></a>
+                    <?php } ?>                    
+                    <?php if($facebook_link != ''){?>
+                    <a href="<?=$facebook_link?>" target="_blank"><span class="team-social-icon fab fa-facebook ml-3"></span></a>
+                    <?php } ?>                    
+                    <?php if($instagram_link != ''){?>
+                    <a href="<?=$instagram_link?>" target="_blank"><span class="team-social-icon fab fa-instagram ml-3"></span></a>
+                    <?php } ?>                    
+                  </div>
 
                   </div>
 
