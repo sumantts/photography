@@ -83,7 +83,7 @@
 
 						<hr>
 						<!-- <p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p> -->
-						<p class="mb-0 text-muted">Go to website? <a href="http://localhost/gitHub/photography/" target="_blank" class="f-w-400">Click Here</a></p>
+						<p class="mb-0 text-muted">Go to website? <a href="http://rongchabi.co.in/" target="_blank" class="f-w-400">Click Here</a></p>
 					</div>
 					
 					
