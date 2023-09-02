@@ -1,4 +1,8 @@
 <?php 
+
+if(!$_SESSION["login_id"]){
+    header("location:?p=signin");
+}
     include('common/head.php'); 
 	//include('assets/php/sql_conn.php');
 

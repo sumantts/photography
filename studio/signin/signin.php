@@ -55,7 +55,7 @@
 <!-- [ auth-signin ] start -->
 <div class="auth-wrapper">
 	<div class="auth-content text-center">
-		<img src="assets/images/<?=$logo?>" alt="<?php echo $p_name; ?>" class="img-fluid mb-4">
+		<!-- <img src="assets/images/<?=$logo?>" alt="<?php echo $p_name; ?>" class="img-fluid mb-4"> -->
 		<div class="card borderless">
 			<div class="row align-items-center ">
 				<div class="col-md-12">

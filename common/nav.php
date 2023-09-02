@@ -3,7 +3,7 @@
           <div class="row w-100 g-0 justify-content-between">
             <div class="col-8">
               <div class="d-inline-block"><a class="navbar-brand pt-0 fs-3 text-black d-flex align-items-center" href="?p=home">
-                <img class="img-fluid" src="assets/img/rong_logo_icon.jpg" alt="" />
+                <!-- <img class="img-fluid" src="assets/img/rong_logo_icon.jpg" alt="" /> -->
                 <span class="fw-bolder ms-2">Rong</span><span class="fw-thin">Chabi</span></a></div>
             </div>
             <div class="col-4 d-lg-none text-end pe-0">

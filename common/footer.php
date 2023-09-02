@@ -7,7 +7,7 @@
               <span class="fw-bolder ms-2">Rong</span><span class="fw-thin">Chabi</span></a></div>
             <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-map-marker-alt"></i><a class="nav-link text-300 d-inline" href="https://goo.gl/maps/VuuVSM7XAeUe3CYn8" target="_blank">Uma Niketan, 35/3/2 Baksara Road, <br>Baksara, Howrah-711110</a></div>
             <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-phone"></i><a class="nav-link text-300 d-inline" href="tel:+919674335554">+91 96743 35554</a></div>
-            <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-envelope"></i><a class="nav-link text-300 d-inline" href="mailto:scrscrumbledegg@gmail.com">scrumbledegg@gmail.com</a></div>
+            <div class="col-12 col-md-10 text-300 mb-3"><i class="fas fa-envelope"></i><a class="nav-link text-300 d-inline" href="mailto:scrinfo@rongchabi.co.in">info@rongchabi.co.in</a></div>
           </div>
           <div class="col-md-6">
             <h5 class="text-white mb-2">SUBSCRIBE TO OUR NEWSLETTER</h5>
