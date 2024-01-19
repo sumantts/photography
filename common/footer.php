@@ -80,6 +80,58 @@
     <script src="vendors/swiper/swiper-bundle.min.js"></script>
     <script src="assets/js/theme.js"></script>
 
+    <script>
+		document.addEventListener('contextmenu', event => event.preventDefault());		
+	</script>
+	<script>
+		// disable right click
+		document.addEventListener('contextmenu', event => event.preventDefault());
+	
+		document.onkeydown = function (e) {
+	
+			// disable F12 key
+			if(e.keyCode == 123) {
+				return false;
+			}
+	
+			// disable I key
+			if(e.ctrlKey && e.shiftKey && e.keyCode == 73){
+				return false;
+			}
+	
+			// disable J key
+			if(e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+				return false;
+			}
+	
+			// disable S key
+			if(e.ctrlKey && e.keyCode == 83) {
+				return false;
+			}
+	
+			// disable U key
+			if(e.ctrlKey && e.keyCode == 85) {
+				return false;
+			}
+	
+			// disable Print Screen key
+			if(e.keyCode == 44) {
+				alert('print')
+				return false;
+			}
+		}
+	
+	</script>
+
+	<!-- <script language="javascript">
+		var noPrint=true;
+		var noCopy=true;
+		var noScreenshot=true;
+		var autoBlur=true;
+	</script>
+	
+	<script type="text/javascript" src="https://pdfanticopy.com/noprint.js"></script> -->
+
   </body>
 
 </html>

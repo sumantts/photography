@@ -37,8 +37,8 @@
 	case 'read_more':
 	$title = "Blog";
 	include('pages/read_more.php');
+	
 	break;
-
 		default:
 		include('pages/home.php');
 	}
